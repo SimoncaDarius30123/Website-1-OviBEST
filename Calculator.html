@@ -1,0 +1,452 @@
+<!DOCTYPE Business>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator de sticlă - OviBest</title>
+
+<link rel="stylesheet" href="Calculator.css">
+<link rel="website icon" type="png" href="Logo_OVI.png"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="header">
+    <nav>
+        <a href="PrincipalPage.html"><img src="Ovibest Glass logo 2023 white.png"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="ascundeMeniu()" ></i>
+            <ul>
+                <li><a href="PrincipalPage.html">HOME</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="arataMeniu()"></i>
+    </nav>
+    <div class="mesaj-principal">
+        <h1>Calculator de greutate a sticlei</h1>
+    </div>
+</section>
+<!----------------------------------------------------------->
+ 
+<section class="sectiuneCalculator">
+    <div class="calc">
+        <hr>
+            <h1>1.Introduceți dimensiunile sticlei în milimetrii</h1>
+            <form name="Calculator">
+                <h1> Lățime</h1>  
+                <input  type="number" name="text1" oninput="suma()" >               
+                <h1>Înălțime</h1>  
+                <input type="number" name="text2"  oninput="suma()" >
+                <h1>Suprafața în metrii pătrați </h1>  
+                <input type="text" name="rezultat" readonly>  
+                <hr>      
+            </form>
+            <h1>2.Alegeți grosimea sticlei</h1>
+            <form name="checkboxes">
+                <input class="size"  type="checkbox" id="valoare1" name="valoare1"  value="value1" onclick="changeCursor();ifCheckDo();verifyIfIsChecked()">
+                <label for="valoare1">4mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare2" name="valoare2"  value="value2" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare2">6mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare3" name="valoare3"  value="value3" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare3">8mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare4" name="valoare4"  value="value4" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare4">10mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare5" name="valoare5"  value="value5" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare5">12mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare6" name="valoare6"  value="value6" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare6">15mm</label>
+                <br>
+                <input class="size" type="checkbox" id="valoare7" name="valoare7"  value="value7" onclick="ifCheckDo();verifyIfIsChecked();changeCursor()">
+                <label for="valoare7">19mm</label>
+                <h1>3.Greutatea sticlei</h1>
+                <input type="text" name="rezultatGrosime" readonly>
+            </form>
+            
+               
+    </div>
+    </section>
+<!--------------------------------------------------->
+
+<section class="footer">
+    <div class="components">
+        <div class="col">
+            <img src="Ovibest Glass logo 2023 white.png" class="logoFooter">
+            <p> Putem spune cu mândrie că suntem o echipă dedicată, orientată 
+                către excelență și inovație. <br>Ne concentrăm asupra satisfacției
+                 clienților noștri prin furnizarea de produse/servicii de cea mai
+                  înaltă calitate și suntem mereu în căutarea modalităților de a ne 
+                  adapta și de a ne dezvolta pentru a răspunde nevoilor în continuă 
+                  schimbare ale pieței. </p>
+        </div>
+        <div class="col">
+            <h3>LOCAȚIE</h3>
+            <p>Strada Uzinei 68, Carei 445100</p>
+        </div>
+        <div class="col">
+            <h3>LINK-URI RAPIDE</h3>
+            <ul>
+                <li><a href="PrincipalPage.html">HOME</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright">OviBEST © 2023 - All Rights Reserved</p>
+</section>
+
+
+            <script type="text/javascript">
+
+         document.getElementById("rezultat").innerHTML = 0 ;
+                 function suma() {
+            x = parseInt(Calculator.text1.value);
+            y = parseInt(Calculator.text2.value);
+            rez = (x*y)/1000000;
+            if(isNaN(rez)){                                                               /*Functia care calculeaza suma in mp*/
+                rez = 0 ;
+            }
+            Calculator.rezultat.value = rez + String("mp");
+        }
+                 document.getElementById("rezultat").innerHTML = suma() ;
+
+                 function ifCheckDo(){
+            var checkBox = document.getElementById("valoare1");
+            if(checkBox.checked == true) {
+              x = parseFloat(Calculator.rezultat.value);
+              kilograme = x*10;
+              if(isNaN(kilograme)){
+                kilograme = 0;
+              }
+              checkboxes.rezultatGrosime.value = kilograme+String("kg"); 
+            }
+                else{
+                    var checkBox = document.getElementById("valoare2");
+                    if(checkBox.checked == true) {
+                        x = parseFloat(Calculator.rezultat.value);
+                        kilograme = x*15;
+                        if(isNaN(kilograme)){
+                            kilograme = 0;
+                        }
+                        checkboxes.rezultatGrosime.value = kilograme+String("kg");
+                    }
+                    else{
+                        var checkBox = document.getElementById("valoare3");
+                        if(checkBox.checked == true) {
+                            x = parseFloat(Calculator.rezultat.value);
+                            kilograme = x*20;
+                            if(isNaN(kilograme)){
+                                 kilograme = 0;
+                        }
+                            checkboxes.rezultatGrosime.value = kilograme+String("kg");
+                        }
+                        else{
+                            var checkBox = document.getElementById("valoare4");
+                            if(checkBox.checked == true) {
+                                x = parseFloat(Calculator.rezultat.value);
+                                kilograme = x*25;
+                                if(isNaN(kilograme)){
+                                     kilograme = 0;
+                        }
+                            checkboxes.rezultatGrosime.value = kilograme+String("kg");
+                            }
+                            else{
+                                var checkBox = document.getElementById("valoare5");
+                                 if(checkBox.checked == true) {
+                                    x = parseFloat(Calculator.rezultat.value);
+                                    kilograme = x*30;
+                                    if(isNaN(kilograme)){
+                                        kilograme = 0;
+                                     }
+                                checkboxes.rezultatGrosime.value = kilograme+String("kg");
+                                }
+                                else{
+                                    var checkBox = document.getElementById("valoare6");
+                                    if(checkBox.checked == true) {
+                                        x = parseFloat(Calculator.rezultat.value);
+                                        kilograme = x*37;
+                                        if(isNaN(kilograme)){
+                                            kilograme = 0;
+                                        }
+                                checkboxes.rezultatGrosime.value = kilograme+String("kg"); 
+                                    }
+                                    else{
+                                        var checkBox = document.getElementById("valoare7");
+                                        if(checkBox.checked == true) {
+                                            x = parseFloat(Calculator.rezultat.value);
+                                            kilograme = x*42;
+                                            if(isNaN(kilograme)){
+                                                 kilograme = 0;
+                                            }
+                                    checkboxes.rezultatGrosime.value = kilograme+String("kg"); 
+                                        }
+                                        else{
+                                            checkboxes.rezultatGrosime.value = 0+String("kg");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } 
+        }
+        
+                 function verifyIfIsChecked(){
+            var checkBox = document.getElementById ("valoare1");
+            if(checkBox.checked == true) {
+                document.getElementById("valoare2").disabled = true;
+                document.getElementById("valoare3").disabled = true;
+                document.getElementById("valoare4").disabled = true;
+                document.getElementById("valoare5").disabled = true;
+                document.getElementById("valoare6").disabled = true;
+                document.getElementById("valoare7").disabled = true;
+              }
+              else{
+                document.getElementById("valoare2").disabled = false;
+                document.getElementById("valoare3").disabled = false;
+                document.getElementById("valoare4").disabled = false;
+                document.getElementById("valoare5").disabled = false;
+                document.getElementById("valoare6").disabled = false;
+                document.getElementById("valoare7").disabled = false;
+                var checkBox = document.getElementById ("valoare2");
+                if(checkBox.checked == true) {
+                    document.getElementById("valoare1").disabled = true;
+                     document.getElementById("valoare3").disabled = true;
+                    document.getElementById("valoare4").disabled = true;
+                    document.getElementById("valoare5").disabled = true;
+                    document.getElementById("valoare6").disabled = true;
+                    document.getElementById("valoare7").disabled = true;
+                }
+                else{
+                    document.getElementById("valoare1").disabled = false;
+                    document.getElementById("valoare3").disabled = false;
+                    document.getElementById("valoare4").disabled = false;
+                    document.getElementById("valoare5").disabled = false;
+                    document.getElementById("valoare6").disabled = false;
+                    document.getElementById("valoare7").disabled = false;
+                    var checkBox = document.getElementById ("valoare3");
+                    if(checkBox.checked == true){
+                        document.getElementById("valoare1").disabled = true;
+                        document.getElementById("valoare2").disabled = true;
+                        document.getElementById("valoare4").disabled = true;
+                        document.getElementById("valoare5").disabled = true;
+                        document.getElementById("valoare6").disabled = true;
+                        document.getElementById("valoare7").disabled = true;
+                    }
+                    else{
+                        document.getElementById("valoare1").disabled = false;
+                        document.getElementById("valoare2").disabled = false;
+                        document.getElementById("valoare4").disabled = false;
+                        document.getElementById("valoare5").disabled = false;
+                        document.getElementById("valoare6").disabled = false;
+                        document.getElementById("valoare7").disabled = false;
+                        var checkBox = document.getElementById ("valoare4");
+                        if(checkBox.checked == true){
+                            document.getElementById("valoare1").disabled = true;
+                            document.getElementById("valoare2").disabled = true;
+                            document.getElementById("valoare3").disabled = true;
+                            document.getElementById("valoare5").disabled = true;
+                            document.getElementById("valoare6").disabled = true;
+                            document.getElementById("valoare7").disabled = true;
+                        }
+                        else{
+                            document.getElementById("valoare1").disabled = false;
+                            document.getElementById("valoare2").disabled = false;
+                            document.getElementById("valoare3").disabled = false;
+                            document.getElementById("valoare5").disabled = false;
+                            document.getElementById("valoare6").disabled = false;
+                            document.getElementById("valoare7").disabled = false;
+                            var checkBox = document.getElementById ("valoare5");
+                            if(checkBox.checked == true){
+                                document.getElementById("valoare1").disabled = true;
+                                document.getElementById("valoare2").disabled = true;
+                                document.getElementById("valoare3").disabled = true;
+                                document.getElementById("valoare4").disabled = true;
+                                document.getElementById("valoare6").disabled = true;
+                                document.getElementById("valoare7").disabled = true;
+                            }
+                            else{
+                                document.getElementById("valoare1").disabled = false;
+                                document.getElementById("valoare2").disabled = false;
+                                document.getElementById("valoare3").disabled = false;
+                                document.getElementById("valoare4").disabled = false;
+                                document.getElementById("valoare6").disabled = false;
+                                document.getElementById("valoare7").disabled = false;
+                                var checkBox = document.getElementById ("valoare6");
+                                if(checkBox.checked == true){
+                                    document.getElementById("valoare1").disabled = true;
+                                    document.getElementById("valoare2").disabled = true;
+                                    document.getElementById("valoare3").disabled = true;
+                                    document.getElementById("valoare4").disabled = true;
+                                    document.getElementById("valoare5").disabled = true;
+                                    document.getElementById("valoare7").disabled = true;
+                                }
+                                else{
+                                    document.getElementById("valoare1").disabled = false;
+                                    document.getElementById("valoare2").disabled = false;
+                                    document.getElementById("valoare3").disabled = false;
+                                    document.getElementById("valoare4").disabled = false;
+                                    document.getElementById("valoare5").disabled = false;
+                                    document.getElementById("valoare7").disabled = false;
+                                    var checkBox = document.getElementById ("valoare7");
+                                    if(checkBox.checked == true){
+                                        document.getElementById("valoare1").disabled = true;
+                                    document.getElementById("valoare2").disabled = true;
+                                    document.getElementById("valoare3").disabled = true;
+                                    document.getElementById("valoare4").disabled = true;
+                                    document.getElementById("valoare5").disabled = true;
+                                    document.getElementById("valoare6").disabled = true;
+                                    }
+                                    else{
+                                    document.getElementById("valoare1").disabled = false;
+                                    document.getElementById("valoare2").disabled = false;
+                                    document.getElementById("valoare3").disabled = false;
+                                    document.getElementById("valoare4").disabled = false;
+                                    document.getElementById("valoare5").disabled = false;
+                                    document.getElementById("valoare6").disabled = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              }
+        }
+
+        function arataMeniu(){
+            navLinks.style.right = "0";
+         }   
+         function ascundeMeniu(){
+            navLinks.style.right = "-200px";
+         }
+
+
+                     function changeCursor(){
+            var checkBox = document.getElementById ("valoare1");
+            if(checkBox.checked == true){
+                document.getElementById("valoare2").style.cursor = "not-allowed";
+                document.getElementById("valoare3").style.cursor = "not-allowed";
+                document.getElementById("valoare4").style.cursor = "not-allowed";
+                document.getElementById("valoare5").style.cursor = "not-allowed";
+                document.getElementById("valoare6").style.cursor = "not-allowed";
+                document.getElementById("valoare7").style.cursor = "not-allowed";
+            }
+                else{
+                    document.getElementById("valoare2").style.cursor = "pointer";
+                    document.getElementById("valoare3").style.cursor = "pointer";
+                    document.getElementById("valoare4").style.cursor = "pointer";
+                    document.getElementById("valoare5").style.cursor = "pointer";
+                    document.getElementById("valoare6").style.cursor = "pointer";
+                    document.getElementById("valoare7").style.cursor = "pointer";
+                    var checkBox = document.getElementById ("valoare2");
+                    if(checkBox.checked == true){
+                        document.getElementById("valoare1").style.cursor = "not-allowed";
+                        document.getElementById("valoare3").style.cursor = "not-allowed";
+                        document.getElementById("valoare4").style.cursor = "not-allowed";
+                        document.getElementById("valoare5").style.cursor = "not-allowed";
+                        document.getElementById("valoare6").style.cursor = "not-allowed";
+                        document.getElementById("valoare7").style.cursor = "not-allowed";
+                    }
+                    else{
+                        document.getElementById("valoare1").style.cursor = "pointer";
+                        document.getElementById("valoare3").style.cursor = "pointer";
+                        document.getElementById("valoare4").style.cursor = "pointer";
+                        document.getElementById("valoare5").style.cursor = "pointer";
+                        document.getElementById("valoare6").style.cursor = "pointer";
+                        document.getElementById("valoare7").style.cursor = "pointer";
+                        var checkBox = document.getElementById ("valoare3");
+                        if(checkBox.checked == true){
+                            document.getElementById("valoare1").style.cursor = "not-allowed";
+                            document.getElementById("valoare2").style.cursor = "not-allowed";
+                            document.getElementById("valoare4").style.cursor = "not-allowed";
+                            document.getElementById("valoare5").style.cursor = "not-allowed";
+                            document.getElementById("valoare6").style.cursor = "not-allowed";
+                            document.getElementById("valoare7").style.cursor = "not-allowed";
+                        }
+                        else{
+                            document.getElementById("valoare1").style.cursor = "pointer";
+                            document.getElementById("valoare2").style.cursor = "pointer";
+                            document.getElementById("valoare4").style.cursor = "pointer";
+                            document.getElementById("valoare5").style.cursor = "pointer";
+                            document.getElementById("valoare6").style.cursor = "pointer";
+                            document.getElementById("valoare7").style.cursor = "pointer";
+                            var checkBox = document.getElementById ("valoare4");
+                            if(checkBox.checked == true){
+                                document.getElementById("valoare1").style.cursor = "not-allowed";
+                                document.getElementById("valoare2").style.cursor = "not-allowed";
+                                document.getElementById("valoare3").style.cursor = "not-allowed";
+                                document.getElementById("valoare5").style.cursor = "not-allowed";
+                                document.getElementById("valoare6").style.cursor = "not-allowed";
+                                document.getElementById("valoare7").style.cursor = "not-allowed";
+                            }
+                            else{
+                                document.getElementById("valoare1").style.cursor = "pointer";
+                                document.getElementById("valoare2").style.cursor = "pointer";
+                                document.getElementById("valoare3").style.cursor = "pointer";
+                                document.getElementById("valoare5").style.cursor = "pointer";
+                                document.getElementById("valoare6").style.cursor = "pointer";
+                                document.getElementById("valoare7").style.cursor = "pointer";
+                                var checkBox = document.getElementById ("valoare5");
+                                if(checkBox.checked == true){
+                                    document.getElementById("valoare1").style.cursor = "not-allowed";
+                                    document.getElementById("valoare2").style.cursor = "not-allowed";
+                                    document.getElementById("valoare3").style.cursor = "not-allowed";
+                                    document.getElementById("valoare4").style.cursor = "not-allowed";
+                                    document.getElementById("valoare6").style.cursor = "not-allowed";
+                                    document.getElementById("valoare7").style.cursor = "not-allowed";
+                                }
+                                else{
+                                    document.getElementById("valoare1").style.cursor = "pointer";
+                                    document.getElementById("valoare2").style.cursor = "pointer";
+                                    document.getElementById("valoare3").style.cursor = "pointer";
+                                    document.getElementById("valoare4").style.cursor = "pointer";
+                                    document.getElementById("valoare6").style.cursor = "pointer";
+                                    document.getElementById("valoare7").style.cursor = "pointer";
+                                    var checkBox = document.getElementById ("valoare6");
+                                    if(checkBox.checked == true){
+                                        document.getElementById("valoare1").style.cursor = "not-allowed";
+                                        document.getElementById("valoare2").style.cursor = "not-allowed";
+                                        document.getElementById("valoare3").style.cursor = "not-allowed";
+                                        document.getElementById("valoare4").style.cursor = "not-allowed";
+                                        document.getElementById("valoare5").style.cursor = "not-allowed";
+                                        document.getElementById("valoare7").style.cursor = "not-allowed";
+                                    }
+                                    else{
+                                        document.getElementById("valoare1").style.cursor = "pointer";
+                                        document.getElementById("valoare2").style.cursor = "pointer";
+                                        document.getElementById("valoare3").style.cursor = "pointer";
+                                        document.getElementById("valoare4").style.cursor = "pointer";
+                                        document.getElementById("valoare5").style.cursor = "pointer";
+                                        document.getElementById("valoare7").style.cursor = "pointer";
+                                        var checkBox = document.getElementById ("valoare7");
+                                        if(checkBox.checked == true){
+                                            document.getElementById("valoare1").style.cursor = "not-allowed";
+                                            document.getElementById("valoare2").style.cursor = "not-allowed";
+                                            document.getElementById("valoare3").style.cursor = "not-allowed";
+                                            document.getElementById("valoare4").style.cursor = "not-allowed";
+                                            document.getElementById("valoare5").style.cursor = "not-allowed";
+                                            document.getElementById("valoare6").style.cursor = "not-allowed";
+                                        }
+                                        else{
+                                            document.getElementById("valoare1").style.cursor = "pointer";
+                                            document.getElementById("valoare2").style.cursor = "pointer";
+                                            document.getElementById("valoare3").style.cursor = "pointer";
+                                            document.getElementById("valoare4").style.cursor = "pointer";
+                                            document.getElementById("valoare5").style.cursor = "pointer";
+                                            document.getElementById("valoare6").style.cursor = "pointer"; 
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+                </script>
+</body>
+</html>

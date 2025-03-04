@@ -1,0 +1,32 @@
+body{
+    background-color:#CEE8F5;
+}
+
+.mesaj-principal{
+    width: 90%;
+    color:black;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.mesaj-principal h1{
+    font-size: 62px;
+}
+
+.mesaj-principal p{
+    margin:10px 0 40px;
+    font-size: 30px;
+    color:black;
+}
+
+@media(max-width:700px){
+    .mesaj-principal h1{
+        font-size: 40px;
+    }
+    .mesaj-principal p{
+        font-size: 20px;
+    }
+}
